@@ -5,7 +5,7 @@
 
 .moviesContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2vw;
     margin-bottom: 3vw;
 }
@@ -39,15 +39,28 @@ button:hover {
     background-color: #fff;
 }
 
+.wrapper h1 {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 5rem;
+    padding: 2vw;
+    margin-bottom: 4vw;
+    -webkit-box-shadow: 0px 0px 15px 1px #fff;
+    box-shadow: 0px 0px 15px 1px #fff;
+    font-size: clamp(2rem, 0.9437rem + 4.507vw, 5rem);
+}
+
 .logo {
     padding-right: 10px;
 }
 .logo img {
     width: 60px;
-    transform: rotate(-10deg); /* Um 90 Grad gegen den Uhrzeigersinn drehen */
+    transform: rotate(-10deg);
 }
 
-h1 {
+.moviesContainer h1 {
     width: fit-content;
     margin: auto;
     text-align: center;
@@ -64,14 +77,20 @@ h1 {
 }
 
 .tile {
-    padding: 2vw 4vw;
+    padding: 2vw;
     background-color: var(--secondary);
-    min-height: auto;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     text-align: center;
+    overflow: hidden;
+}
+
+.tile:hover {
+    transition: 300ms ease-in-out;
+    transform: scale(1.05);
 }
 
 .tile h2 {
@@ -80,7 +99,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-p:nth-of-type(2) {
+.tile p:nth-of-type(2) {
     font-size: 1.5rem;
 }
 
@@ -88,20 +107,47 @@ p:nth-of-type(2) {
     color: var(--accent2);
 }
 
-@media screen and (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vw;
+}
 
+.inputField {
+    all: unset;
+    padding: 10px 20px;
+    border: 1px solid var(--accent2);
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.errorMessage {
+    font-size: 3rem;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .moviesContainer {
+        gap: 20px;
+    }
     .buttonContainer {
         flex-direction: column;
         align-items: center;
-        padding: 2rem;
+        padding: 1rem;
         max-width: 90vw;
     }
 
     button {
         width: 200px;
         margin-bottom: 5px;
+    }
+    .tile {
+        padding: 2vw 4vw;
+        min-height: auto; /* Anpassen der Mindesthöhe */
+    }
+
+    .tile:hover {
+        transform: scale(1);
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moviesData from "../../Data/Data";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
     // I use just one state to rerender and update state in every function
     const [movies, setMovies] = useState(moviesData);
+    // Another state for search bar
+    const [search, setSearch] = useState("");
 
     // sort by year
 
@@ -69,6 +71,12 @@ const Home = () => {
         return stars;
     };
 
+    // fix the problem, that detail "back" link navigated to end of home
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()));
     return (
         <div className="wrapper">
             <h1>
@@ -86,25 +94,30 @@ const Home = () => {
                 <button onClick={() => sortByTitle(true)}>A-Z ▲</button>
                 <button onClick={() => sortByTitle(false)}>Z-A ▼</button>
             </div>
+            <div className="searchContainer">
+                <input type="text" placeholder="Search movies..." className="inputField" value={search} onChange={(e) => setSearch(e.target.value)} />
+            </div>
 
             <div className="moviesContainer">
-                {movies.map((movie, index) => {
-                    return (
-                        <Link to={`/movie/${index}`}>
-                            <div key={index} className="tile">
+                {filteredMovies.length > 0 ? (
+                    filteredMovies.map((movie, index) => (
+                        <Link key={index} to={`/movie/${index}`}>
+                            <div className="tile">
                                 <h2>{movie.title}</h2>
                                 <p>{movie.year}</p>
                                 <p>{movie.director}</p>
                                 <p>{movie.duration}</p>
+
                                 <p>{starsRating(movie.rate)}</p>
                                 <p>{movie.rate}</p>
                                 <p>{movie.genre.join(" | ")}</p>
                             </div>
                         </Link>
-                    );
-                })}
+                    ))
+                ) : (
+                    <p className="errorMessage">No results for {search}.</p>
+                )}
             </div>
-            <Footer />
         </div>
     );
 };
