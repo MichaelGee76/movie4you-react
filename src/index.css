@@ -1,0 +1,12 @@
+:root {
+    --main: #35374b;
+    --secondary: #344955;
+    --accent1: #50727b;
+    --accent2: #78a083;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
