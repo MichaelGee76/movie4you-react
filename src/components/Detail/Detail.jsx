@@ -7,6 +7,8 @@ import { useEffect } from "react";
 const Detail = () => {
     let { id } = useParams();
 
+    const movie = movies.find((movie) => movie.id === id);
+
     // fixed the "not scroll to top problem"
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -15,29 +17,29 @@ const Detail = () => {
     return (
         <div className="detailContainer">
             <div className="innerContainer">
-                <h1 className="detailHeading">{movies[id].title}</h1>
+                <h1 className="detailHeading">{movie.title}</h1>
 
                 <div className="box">
                     <div className="detailBox">
                         <p>Rating: </p>
-                        <p className="stats">{movies[id].rate} Stars</p>
+                        <p className="stats">{movie.rate} Stars</p>
                     </div>
                     <div className="detailBox">
                         <p>Duration: </p>
-                        <p className="stats">{movies[id].duration}</p>
+                        <p className="stats">{movie.duration}</p>
                     </div>
                     <div className="detailBox">
                         <p>Director: </p>
-                        <p className="stats">{movies[id].director}</p>
+                        <p className="stats">{movie.director}</p>
                     </div>
                     <div className="detailBox">
                         <p>Genre: </p>
-                        <p className="stats">{movies[id].genre.join(" | ")}</p>
+                        <p className="stats">{movie.genre.join(" | ")}</p>
                     </div>
 
                     <div className="detailBox">
                         <p>Year: </p>
-                        <p className="stats">{movies[id].year}</p>
+                        <p className="stats">{movie.year}</p>
                     </div>
                 </div>
                 {/* <img src="https://picsum.photos/500/300" alt="random image" /> */}

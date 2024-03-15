@@ -1,4 +1,4 @@
-const movies = [
+let movies = [
     {
         title: "The Shawshank Redemption",
         year: "1994",
@@ -2000,5 +2000,12 @@ const movies = [
         rate: "8.0",
     },
 ];
+
+let moviesIdWithKey = movies.map((movie, index) => {
+    const paddedIndex = (index + 1).toString().padStart(4, "0"); // Index mit führenden Nullen auffüllen
+    return { ...movie, id: `0900${paddedIndex}` }; // Hinzufügen des Schlüssels "id" mit dem eindeutigen Wert
+});
+
+movies = [...moviesIdWithKey];
 
 export default movies;

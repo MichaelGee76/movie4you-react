@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moviesData from "../../Data/Data";
 import "./Home.css";
-import Footer from "../../components/Footer/Footer";
+
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
     const [movies, setMovies] = useState(moviesData);
     // Another state for search bar
     const [search, setSearch] = useState("");
+    console.log("movie mit id", moviesData);
 
     // sort by year
 
@@ -101,7 +102,7 @@ const Home = () => {
             <div className="moviesContainer">
                 {filteredMovies.length > 0 ? (
                     filteredMovies.map((movie, index) => (
-                        <Link key={index} to={`/movie/${index}`}>
+                        <Link key={index} to={`/movie/${movie.id}`}>
                             <div className="tile">
                                 <h2>{movie.title}</h2>
                                 <p>{movie.year}</p>
