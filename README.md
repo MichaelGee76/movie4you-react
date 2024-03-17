@@ -3,8 +3,8 @@
 A SuperCode BootCamp Frontend Project
 
 
- ![movie4you-mobile](https://github.com/MichaelGee76/movie4you-react/assets/119419242/81ffe51b-ad71-4d60-a52e-f7bcaa798c3e)
- ![screely-1710687070521](https://github.com/MichaelGee76/movie4you-react/assets/119419242/2c8aefea-5544-416f-bad8-41d54f4f721b)
+![Group 1](https://github.com/MichaelGee76/movie4you-react/assets/119419242/8c488262-cde4-4c14-9779-468eceb3801d)
+
 
 
 Built in React 
